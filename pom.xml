@@ -57,9 +57,11 @@
               <rules>
                 <requireMavenVersion>
                   <version>[3.8.6,)</version>
+                  <message>You are using an unsupported version of Maven. Please upgrade to at least 3.8.6.</message>
                 </requireMavenVersion>
                 <requireJavaVersion>
                   <version>[17,)</version>
+                  <message>You are using an unsupported version of Java. Please upgrade to at least version 17.</message>
                 </requireJavaVersion>
               </rules>
             </configuration>
