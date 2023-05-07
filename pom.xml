@@ -7,6 +7,8 @@
   <version>1.0-SNAPSHOT</version>
   <name>my-app</name>
   <url>https://maven.apache.org</url>
+  
+  <!-- Add JUnit Jupiter dependency -->
   <dependencies>
     <dependency>
       <groupId>org.junit.jupiter</groupId>
@@ -15,12 +17,24 @@
       <scope>test</scope>
     </dependency>
   </dependencies>
+  
+  <!-- Set source encoding -->
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
   </properties>
+  
+  <!-- Configure plugins -->
   <build>
     <pluginManagement>
       <plugins>
+        <!-- Maven Enforcer Plugin -->
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-enforcer-plugin</artifactId>
+          <version>3.10.1</version>
+        </plugin>
+        
+        <!-- Maven Jar Plugin -->
         <plugin>
           <groupId>org.apache.maven.plugins</groupId>
           <artifactId>maven-jar-plugin</artifactId>
@@ -35,6 +49,8 @@
             </archive>
           </configuration>
         </plugin>
+        
+        <!-- Maven Compiler Plugin -->
         <plugin>
           <groupId>org.apache.maven.plugins</groupId>
           <artifactId>maven-compiler-plugin</artifactId>
@@ -46,5 +62,31 @@
         </plugin>
       </plugins>
     </pluginManagement>
+    
+    <!-- Configure Maven Enforcer Plugin -->
+    <plugins>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-enforcer-plugin</artifactId>
+        <version>3.1.0</version>
+        <executions>
+          <execution>
+            <id>enforce-maven</id>
+            <goals>
+              <goal>enforce</goal>
+            </goals>
+            <configuration>
+              <rules>
+                <requireMavenVersion>
+                  <version>[3.8.6,)</version>
+                </requireMavenVersion>
+                <requireJavaVersion>
+                  <version>[17.0,)</version>
+                </requireJavaVersion>
+              </rules>
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>
+    </plugins>
   </build>
-</project>
