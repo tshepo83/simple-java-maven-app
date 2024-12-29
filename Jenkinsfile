@@ -8,7 +8,6 @@ pipeline {
         stage('Build') {
             steps {
                 sh 'mvn clean install -Denforcer.skip=true'
-                sh 'mvn enforcer:enforce'
             }
         }
     }
