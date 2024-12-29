@@ -7,7 +7,7 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                sh 'mvn -B -DskipTests clean package'
+                sh 'mvn clean install -Denforcer.skip=true'
                 sh 'mvn enforcer:enforce'
             }
         }
